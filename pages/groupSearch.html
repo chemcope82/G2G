@@ -7,9 +7,9 @@
         <link rel="stylesheet" href="../css/style.css">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
         <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:700|Fjalla+One" rel="stylesheet">
-        <link href="bootstrap-slider.css" rel="stylesheet">
+        <!-- <link href="bootstrap-slider.css" rel="stylesheet"> -->
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-        <script src="./js/search.js"></script>
+        <script src="../public/js/search.js"></script>
         
         <title> LOLG2G </title>
         
@@ -23,6 +23,7 @@
             <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
             <div class="slidecontainer">
                 <label id="begin">Beginner</label><label id="pro">Pro-Amateur</label>
+                <br><p>Value: <span id="demo"></span></p>
             </div>
         </div>
         <hr>
@@ -296,7 +297,7 @@
     </div>
 </body>
 
-<script>
+<!-- <script>
     var slider = document.getElementById("myRange");
     var output = document.getElementById("demo");
     output.innerHTML = slider.value; // Display the default slider value
@@ -305,5 +306,5 @@
     slider.oninput = function() {
         output.innerHTML = this.value;
     }
-</script>
+</script> -->
 </html>

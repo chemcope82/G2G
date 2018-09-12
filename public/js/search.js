@@ -14,3 +14,13 @@ for(var g = 0; g < locations.length; g++){
 
   $("#location").append(locationDiv);
 }
+
+// Slider
+var slider = $("#myRange");
+var output = $("#demo");
+output.HTML(slider.value); // Display the default slider value
+
+// Update the current slider value (each time you drag the slider handle)
+slider.oninput = function() {
+  output.HTML(this.value);
+};
