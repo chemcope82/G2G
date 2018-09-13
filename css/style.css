@@ -314,3 +314,13 @@ padding:40px 0px !important;
 .champDiv {
   float: left;
 }
+
+#rank{
+  margin: 0 auto;
+  align-content: center;
+  padding-left: 100px;
+}
+
+.tier{
+  width: 100px;
+}
