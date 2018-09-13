@@ -2,26 +2,42 @@ var db = require("../models");
 
 module.exports = function(app) {
   // Load index page
+// Dependencies
+// =============================================================
+var path = require("path");
+
+
+  // Each of the below routes just handles the HTML page that the user gets sent to.
+
+  // index route loads view.html
   app.get("/", function(req, res) {
-    db.Example.findAll({}).then(function(dbExamples) {
-      res.render("index", {
-        msg: "Welcome!",
-        examples: dbExamples
-      });
-    });
+    res.sendFile(path.join(__dirname, "./pages/homepage.html"));
   });
 
-  // Load example page and pass in an example by id
-  app.get("/example/:id", function(req, res) {
-    db.Example.findOne({ where: { id: req.params.id } }).then(function(dbExample) {
-      res.render("example", {
-        example: dbExample
-      });
-    });
+  // Route to the group search page
+  app.get("/groupSearch", function(req, res) {
+    res.sendFile(path.join(__dirname, "../public/groupSearch.html"));
   });
 
-  // Render 404 page for any unmatched routes
-  app.get("*", function(req, res) {
-    res.render("404");
+  // Route to the champions page
+  app.get("/champions", function(req, res) {
+    res.sendFile(path.join(__dirname, "../public/champions.html"));
   });
+
+  // Route to the updates page
+  app.get("/updates", function(req, res) {
+    res.sendFile(path.join(__dirname, "../public/updates.html"));
+  });
+
+  // Route to the players page
+  app.get("/players", function(req, res) {
+    res.sendFile(path.join(__dirname, "../public/players.html"));
+  });
+
+  // blog route loads tier list
+  app.get("/tierList", function(req, res) {
+    res.sendFile(path.join(__dirname, "../public/tierList.html"));
+  });
+
+
 };

@@ -4,45 +4,40 @@
 <head>
     <meta charset = "UTF-8" lang="en">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        
         <link rel="stylesheet" href="../css/style.css">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
         <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:700|Fjalla+One" rel="stylesheet">
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-        <script src="https://code.jquery.com/jquery-3.3.1.js"  integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
         <link href="https://fonts.googleapis.com/css?family=Bungee+Shade" rel="stylesheet">
-        
-        
         <title> LOLG2G </title>
-
-
 </head>
-<!-- nav bar -->
-<nav class="navbar fixed-top navbar-dark bg-dark">
-    <div class="navbar">
-        <a class="navbar-brand" href="../pages/homepage.html">LOLG2G</a>
-    </div>
-    <ul>
-        <li><a href="../pages/groupSearch.html">SEARCH</a></li>
-        <li><a href="../pages/updates.html">UPDATES</a></li>
-        <li><a href="../pages/players.html">PLAYERS</a></li>
-        <li><a href="../pages/teams.html">TEAMS</a></li>
-        <li><a href="../pages/proBuilds.html">PRO BUILDS</a></li>
-        <li><a href="../pages/tierList.html">TIER LIST</a></li>
-        <li><a href="../pages/champions.html">CHAMPIONS</a></li>
-    </ul>
-</nav>
+
 
 <body class="normal">
+    <!-- nav bar -->
+    <nav class="navbar fixed-top navbar-dark bg-dark">
+        <div class="navbar">
+            <a class="navbar-brand" href="/">LOLG2G</a>
+        </div>
+        <ul>
+            <li><a href="/groupSearch">SEARCH</a></li>
+            <li><a href="/updates">UPDATES</a></li>
+            <li><a href="/players">PLAYERS</a></li>
+            <li><a href="/teams">TEAMS</a></li>
+            <li><a href="/proBuilds">PRO BUILDS</a></li>
+            <li><a href="/tierList">TIER LIST</a></li>
+            <li><a href="/champions">CHAMPIONS</a></li>
+        </ul>
+    </nav>
     <!-- Table for Search Criteria -->
     <div id="criteria">
         <!-- Skill Level Selector -->
         <div class="slidecontainer">
             <input type="range" min="1" max="70" value="35" class="slider" id="myRange">
             <div class="slidecontainer">
-                <label id="begin">Beginner</label><label id="pro">Pro-Amateur</label>
-                <br><p>Value: <span id="demo"></span></p>
+                <div id="rank">
+                    <span id="rankIcon"><img src='../images/TierIcons/PlatinumTier.png' class='tier'></span>
+                </div>
+                
             </div>
         </div>
         <hr>
@@ -198,6 +193,8 @@
     </div> <!-- End of groups -->
 </body>
 
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 <script src="../public/js/search.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script> -->
 </html>
