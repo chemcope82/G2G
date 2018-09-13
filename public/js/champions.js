@@ -19,7 +19,7 @@ var API = {
       championDiv.className = "champDiv";
   //https://api.champion.gg/v2/champions/${champion.key}?&limit=200&champData=groupedWins,trinkets,firstitems,summoners,finalitems,masteries,hashes,skillorderhash&api_key=${API.key}
       var championLink = document.createElement("a");
-      championLink.setAttribute("href", `https://na.leagueoflegends.com/en/game-info/champions/`+ champName +`/`);
+      championLink.setAttribute("href", `https://u.gg/lol/champions/` + champName + `/build/`);
       championLink.setAttribute("target", "_blank");
       championDiv.appendChild(championLink);
       
