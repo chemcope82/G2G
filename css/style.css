@@ -34,6 +34,7 @@ background: linear-gradient(
 }
 
 
+
 ul {
   list-style-type: none;
   padding: 12px;
@@ -70,11 +71,14 @@ li a {
 } */
 
 html {
-  margin: 40px auto;
+  margin: 0px auto;
 }
 
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> frontEnd
 .homebtn {
     opacity: 0.7;
     background: #1c1c1c;
@@ -193,9 +197,6 @@ html {
 .slideshow-text {
   position: absolute;
   margin-top: 21%;
-  /* left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%); */
   z-index: 100;
   font-size: 60px;
   width: 100vw;
@@ -214,14 +215,31 @@ html {
   }
 }
 
-
 /* updates.html page */
 
-.col-3 {
-top: -45px;
+#twitter-widget-0{
+  padding-left: 15px !important;
 }
+
+.esports {
+  margin:0px 0px;
+  padding: 0px;
+}
+
+.col-3 {
+height: 100vh;
+padding:40px 0px !important;
+}
+
+.col-9  {
+height: 100vh;
+padding:40px 0px !important;
+} 
+
+
+
 /* 
-  Mike's CSS Section
+  Mike's groupSearch CSS Section
 */
 
 .normal{
@@ -239,11 +257,6 @@ top: -45px;
   margin: 10px;
 }
 
-
-
-.col-9 {
-left: -15px;
-} 
 
 #groups {
   position: relative;
