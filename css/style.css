@@ -299,3 +299,7 @@ left: -15px;
 #dropdownMenuButton{
   width: 100px;
 }
+
+.champDiv {
+  float: left;
+}
