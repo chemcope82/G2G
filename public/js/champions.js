@@ -30,11 +30,11 @@ var API = {
       var name = document.createElement("p");
       name.textContent = champion.name;
       championLink.appendChild(name);
-      var newButton = document.createElement("BUTTON");
-      newButton.textContent = champion.name;
-      newButton.setAttribute("data-hero", `http://api.champion.gg/v2/champions/${champion.key}?&limit=200&champData=groupedWins,trinkets,firstitems,summoners,finalitems,masteries,hashes,skillorderhash&api_key=${API.key}`)
-      newButton.setAttribute("class", "championButton")
-      championLink.appendChild(newButton);
+      // var newButton = document.createElement("BUTTON");
+      // newButton.textContent = champion.name;
+      // newButton.setAttribute("data-hero", `http://api.champion.gg/v2/champions/${champion.key}?&limit=200&champData=groupedWins,trinkets,firstitems,summoners,finalitems,masteries,hashes,skillorderhash&api_key=${API.key}`)
+      // newButton.setAttribute("class", "championButton")
+      // championLink.appendChild(newButton);
       
       containerDiv.appendChild(championDiv);
     }
