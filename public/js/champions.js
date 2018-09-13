@@ -18,7 +18,7 @@ var API = {
       var championDiv = document.createElement("div");
       championDiv.className = "champDiv";
   
-      // var championLink = document.createElement("a");
+      var championLink = document.createElement("a");
       // championLink.setAttribute("href", `http://api.champion.gg/v2/champions/${champion.key}?&limit=200&champData=groupedWins,trinkets,firstitems,summoners,finalitems,masteries,hashes,skillorderhash&api_key=${API.key}`);
       championLink.setAttribute("target", "_blank");
       championDiv.appendChild(championLink);
