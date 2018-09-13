@@ -11,7 +11,7 @@
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
         <script src="https://code.jquery.com/jquery-3.3.1.js"  integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
-        
+        <link href="https://fonts.googleapis.com/css?family=Bungee+Shade" rel="stylesheet">
         
         
         <title> LOLG2G </title>
@@ -51,7 +51,7 @@
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
                     <div class="input-group-text">
-                    <input type="checkbox" aria-label="Primary Role">
+                    <input type="checkbox" class="prim-role" aria-label="Primary Role" value="top">
                     </div>
                 </div>
                 <label class="form-control" aria-label="Primary Role" id="TopLane">Top Lane</label>
@@ -59,7 +59,7 @@
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
                         <div class="input-group-text">
-                        <input type="checkbox" aria-label="Primary Role">
+                        <input type="checkbox" class="prim-role" aria-label="Primary Role" value="jungler">
                         </div>
                     </div>
                     <label class="form-control" aria-label="Primary Role" id="Jungler">Jungler</label>
@@ -67,7 +67,7 @@
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
                         <div class="input-group-text">
-                        <input type="checkbox" aria-label="Primary Role">
+                        <input type="checkbox" class="prim-role" aria-label="Primary Role" value="mid">
                         </div>
                     </div>
                     <label class="form-control" aria-label="Primary Role" id="MidLane">Mid Lane</label>
@@ -75,7 +75,7 @@
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
                         <div class="input-group-text">
-                        <input type="checkbox" aria-label="Primary Role">
+                        <input type="checkbox" class="prim-role" aria-label="Primary Role" value="adc">
                         </div>
                     </div>
                     <label class="form-control" aria-label="Primary Role" id="ADC">ADC</label>
@@ -83,7 +83,7 @@
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
                         <div class="input-group-text">
-                        <input type="checkbox" aria-label="Primary Role">
+                        <input type="checkbox" class="prim-role" aria-label="Primary Role" value="support">
                         </div>
                     </div>
                     <label class="form-control" aria-label="Primary Role" id="Support">Support</label>
@@ -95,7 +95,7 @@
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
                     <div class="input-group-text">
-                    <input type="checkbox" aria-label="Secondary Role">
+                    <input type="checkbox" class="sec-role" aria-label="Secondary Role" value="top">
                     </div>
                 </div>
                 <label class="form-control" aria-label="Secondary Role" name="Top Lane">Top Lane</label>
@@ -103,7 +103,7 @@
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
                         <div class="input-group-text">
-                        <input type="checkbox" aria-label="Secondary Role">
+                        <input type="checkbox" class="sec-role" aria-label="Secondary Role" value="jungler">
                         </div>
                     </div>
                     <label class="form-control" aria-label="Secondary Role" name="Jungler">Jungler</label>
@@ -111,7 +111,7 @@
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
                         <div class="input-group-text">
-                        <input type="checkbox" aria-label="Secondary Role">
+                        <input type="checkbox" class="sec-role" aria-label="Secondary Role" value="mid">
                         </div>
                     </div>
                     <label class="form-control" aria-label="Secondary Role" name="Mid Lane">Mid Lane</label>
@@ -119,7 +119,7 @@
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
                         <div class="input-group-text">
-                        <input type="checkbox" aria-label="Secondary Role">
+                        <input type="checkbox" class="sec-role" aria-label="Secondary Role" value="adc">
                         </div>
                     </div>
                     <label class="form-control" aria-label="Secondary Role" name="ADC">ADC</label>
@@ -127,7 +127,7 @@
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
                         <div class="input-group-text">
-                        <input type="checkbox" aria-label="Secondary Role">
+                        <input type="checkbox" class="sec-role" aria-label="Secondary Role" value="support">
                         </div>
                     </div>
                     <label class="form-control" aria-label="Secondary Role" name="Support">Support</label>
@@ -138,7 +138,7 @@
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
                         <div class="input-group-text">
-                        <input type="checkbox" aria-label="Tactical Role">
+                        <input type="checkbox" class="tact-role" aria-label="Tactical Role" value="drafter">
                         </div>
                     </div>
                     <label class="form-control" aria-label="Tactical Role" name="Drafter">Drafter</label>
@@ -146,7 +146,7 @@
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
                             <div class="input-group-text">
-                            <input type="checkbox" aria-label="Tactical Role">
+                            <input type="checkbox" class="tact-role" aria-label="Tactical Role" value="shot">
                             </div>
                         </div>
                         <label class="form-control" aria-label="Tactical Role" name="Shot Caller">Shot Caller</label>
@@ -154,7 +154,7 @@
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
                             <div class="input-group-text">
-                            <input type="checkbox" aria-label="Tactical Role">
+                            <input type="checkbox" class="tact-role" aria-label="Tactical Role" value="captain">
                             </div>
                         </div>
                         <label class="form-control" aria-label="Tactical Role" name="Captain">Captain/IGL</label>
@@ -165,12 +165,37 @@
 
     <!-- Table for Group Matches -->
     <div id="groups">
-            Lorem Ipsum
-            "Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit..."
-            "There is no one who loves pain itself, who seeks after it and wants to have it, simply because it is pain..."
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas eget diam vel massa ornare accumsan. Donec sed justo efficitur, hendrerit ipsum eget, pellentesque est. Sed ac commodo urna. Proin fringilla varius erat, ac scelerisque leo mattis sit amet. Curabitur fringilla malesuada libero et sagittis. Cras lobortis, odio ac faucibus commodo, ex justo pretium eros, eu laoreet arcu nulla id tellus. Vestibulum non diam non ligula mollis imperdiet eget at enim. Etiam sapien justo, viverra non posuere eget, viverra at leo. Etiam sit amet luctus tortor. Sed consectetur, odio efficitur gravida pulvinar, quam dolor maximus est, ac eleifend tortor diam id nulla. Suspendisse egestas ut tortor eu venenatis. Suspendisse mi nibh, congue eget ipsum at, bibendum imperdiet velit. In libero nisl, vestibulum in est accumsan, pulvinar lacinia libero. Sed aliquam aliquam augue ut elementum. Aliquam porta finibus congue. Interdum   
+        <div class="row">
+            <div class="col-4">
+                <p>Primary Role:</p>
+                <img src="../images/Icons/Fighter.png">
+            </div>
+            <div class="col-4">
+                <p>Class: </p>
+                <img src="../images/Icons/Tank.png">
+            </div>
+            <div class="col-4">
+                <p>Tactical Role:</p>
+                <img src="../images/Icons/Tank.png">
+            </div>
+        </div>    
+        <div class="row">
+            <div class="col-4">
+                <p>Primary Role:</p>
+                <img src="../images/Icons/Fighter.png">
+            </div>
+            <div class="col-4">
+                <p>Class: </p>
+                <img src="../images/Icons/Tank.png">
+            </div>
+            <div class="col-4">
+                <p>Tactical Role:</p>
+                <img src="../images/Icons/Tank.png">
+            </div>
+        </div>  
+        
             
-    </div>
+    </div> <!-- End of groups -->
 </body>
 
 <script src="../public/js/search.js"></script>
