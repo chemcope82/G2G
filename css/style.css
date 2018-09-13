@@ -72,6 +72,9 @@ li a {
 html {
   margin: 40px auto;
 }
+
+
+
 .homebtn {
     opacity: 0.7;
     background: #1c1c1c;
@@ -302,4 +305,14 @@ left: -15px;
 
 .champDiv {
   float: left;
+}
+
+#rank{
+  margin: 0 auto;
+  align-content: center;
+  padding-left: 100px;
+}
+
+.tier{
+  width: 100px;
 }
