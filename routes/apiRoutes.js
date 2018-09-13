@@ -22,3 +22,18 @@ module.exports = function(app) {
     });
   });
 };
+
+  // If a user sends data to add a new character...
+  app.post("/api/newChamp", function(req, res) {
+    // Take the request...
+    //var character = req.body;
+
+    clickedHero = req.body.newChamp;
+    console.log("clickedHero", clickedHero)
+
+    // Create a routeName
+
+    // Then add the character to the database using sequelize
+    res.json(true);
+  });
+};
