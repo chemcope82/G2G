@@ -1,7 +1,7 @@
 console.log("connected champions.js")
 var API = {
     "key": "ede1611243a89b545af7e3cb141474ca",
-    "base": "http://ddragon.leagueoflegends.com/cdn/8.17.1",
+    "base": "https://ddragon.leagueoflegends.com/cdn/8.17.1",
     "data": "/data/en_US",
     "images": "/img/champion"
   };
