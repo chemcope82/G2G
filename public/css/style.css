@@ -71,7 +71,12 @@ li a {
 } */
 
 html {
+  margin: 40px auto;
+}
+
+.updateshtml{
   margin: 0px auto;
+  background: #191919;
 }
 
 .homebtn {
