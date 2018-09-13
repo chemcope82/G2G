@@ -26,8 +26,23 @@ function getSkill(){
   });
 }
 
-function getPrimRole(){
-  if($("#TopLane").attr("checked") || $("#MidLane").attr("checked") || $("#Jungler").attr("checked") || $("#ADC").attr("checked") || $("#Support").attr("checked")){
-    
-  }
-}
+
+
+$(".prim-role").click(function() {
+  $(".prim-role").not(this).prop("checked", false);
+  primRole = $(this).val();
+  //call to DB for Primary Role
+
+});
+
+$(".sec-role").click(function() {
+  $(".sec-role").not(this).prop("checked", false);
+  secRole = $(this).val();
+  //call to DB for Secondary Role
+});
+
+$(".tact-role").click(function() {
+  $(".tact-role").not(this).prop("checked", false);
+  tactRole = $(this).val();
+  //call to DB for Tactical Role
+});
