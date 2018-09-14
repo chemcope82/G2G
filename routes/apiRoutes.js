@@ -1,10 +1,17 @@
 var db = require("../models");
 
 module.exports = function(app) {
-  // Get all examples
-  app.get("/api/examples", function(req, res) {
-    db.LoLDB.findAll({}).then(function(dbLoLDB) {
-      res.json(dbLoLDB);
+  // Get all users
+  app.get("/api/users", function(req, res) {
+    db.users.findAll({}).then(function(results) {
+      res.json(results);
+    });
+  });
+
+  // Get all teams
+  app.get("/api/teams", function(req, res) {
+    db.teams.findAll({}).then(function(results) {
+      res.json(results);
     });
   });
 
