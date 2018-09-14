@@ -103,7 +103,7 @@ html {
 .slideshow {
   position:absolute;
   z-index: 1;
-  top: 5%;
+  top: 2.5%;
   left: 0;
   width: 100vw;
   height: 100vh;
@@ -245,15 +245,20 @@ padding:40px 0px !important;
   height: 100%;
   background: #110101;
   font-family: 'Roboto', sans-serif;
+  color:white;
+  letter-spacing: 2px;
+  
 }
 
 #criteria {
   position: relative;
-  float: left;
-  background-color: darkgray;
-  padding: 10px;
-  width: 23%;
+  padding: 20px;
   margin: 10px;
+  height: 110%;
+  background-image: url("../images/blue.jpg");
+  width: 100%;
+  overflow: auto;
+  top: -50px;
 }
 
 #groups {
@@ -270,11 +275,14 @@ padding:40px 0px !important;
   width: 100%;
   height: 15px;
   border-radius: 5px;   
-  background: #d3d3d3;
+  background: white;
   outline: none;
-  opacity: 0.7;
+  opacity: 0.5;
   -webkit-transition: .2s;
-  transition: opacity .2s;
+  transition: .2s;
+  margin-top: 20px;
+  margin-bottom: 20px;
+
 }
 
 .slider::-webkit-slider-thumb {
@@ -283,7 +291,7 @@ padding:40px 0px !important;
   width: 25px;
   height: 25px;
   border-radius: 50%; 
-  background: #0099FF;
+  background-color: rgb(114, 236, 240);
   cursor: pointer;
 }
 
@@ -291,7 +299,7 @@ padding:40px 0px !important;
   width: 25px;
   height: 25px;
   border-radius: 50%;
-  background: #0099FF;
+  background-color: rgb(114, 236, 240);
   cursor: pointer;
 }
 
@@ -322,14 +330,143 @@ padding:40px 0px !important;
 #rank{
   margin: 0 auto;
   align-content: center;
-  padding-left: 100px;
+  padding-left: 120px;
 }
 
 .tier{
-  width: 100px;
+  width: 80px;
 }
 
-/* champions page css */
+.form-group {
+  width: 100%;
+
+
+}
+
+#userInfo {
+  height:100%;
+  background-image: url("../images/poro.jpg");
+  font-family: 'Anton', sans-serif;
+  font-weight: bolder;
+
+}
+
+.form-control {
+  letter-spacing: 2px;
+}
+
+
+
+label.form-control {
+  color: white;
+  font-weight: bolder;
+  background-color:rgba(12, 11, 11, 0.596);
+  opacity: 0.7;
+  border-width: 2px;
+  border-color: grey;
+  font-family: 'Quantico', sans-serif;
+
+}
+
+ .primaryRole {
+  margin-top: -15px;
+  font-family: 'Quantico', sans-serif;
+
+  /* margin-bottom: 10px; */
+  
+
+} 
+
+.secondaryRole {
+  margin-top:10px;
+  font-family: 'Quantico', sans-serif;
+
+}
+
+.tacticalRole {
+  font-family: 'Quantico', sans-serif;
+
+}
+
+.form {
+  width: 100%;
+}
+
+
+#skillLevel {
+  margin-top:40px;
+  font-family: 'Quantico', sans-serif;
+  letter-spacing: 3px;
+  font-size:21px;
+
+}
+
+#userNameInput {
+  padding:20px;
+  opacity: 0.5;
+  text-align: right;
+  font-style: italic;
+
+}
+
+#username {
+  padding:20px;
+  font-family: 'Quantico', sans-serif;
+  letter-spacing: 3px;
+  font-size:21px;
+  text-align: right;
+  display: block;
+  
+}
+
+#userName {
+  padding:20px;
+  text-align: right;
+  letter-spacing: 2px;
+  margin-top: -10px;
+  font-weight:bold;
+
+}
+
+#userTitle {
+  font-family: 'Quantico', sans-serif;
+  font-size:21px;
+  letter-spacing: 3px;
+  text-align: right;
+  margin-top: 30%;
+  padding-right: 26px;
+
+
+}
+#submitUser .userBtn {
+  align: right;
+}
+/* .card .col-md-3 {
+  height:90%;
+}  */
+/* .btn-primary {
+  padding:20px;
+} */
+
+.col-md-3 {
+  height: 100vh;
+  padding:40px 0px !important;
+  }
+  overflow:auto;
+  
+.buttonGroup {
+  float: right;
+}
+
+
+/* champions page
+css */
+
+.col-md-9 {
+  overflow: auto;
+}
+
+
 
 .card .text-white .bg-dark {
   margin-top: 30px;
@@ -354,14 +491,9 @@ padding:40px 0px !important;
   letter-spacing: 2px;
   font-size: 12px;
   font-family: 'Anton', sans-serif;
+  font-weight: bold;
 
 }
-
-/* champDiv .col-md-2 {
-  margin-top: 20px;
-  margin: 20px;
-
-} */
 
 .grid-container {
   display: grid;
