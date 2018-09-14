@@ -1,7 +1,7 @@
 console.log("connected champions.js")
 var API = {
     "key": "ede1611243a89b545af7e3cb141474ca",
-    "base": "http://ddragon.leagueoflegends.com/cdn/8.17.1",
+    "base": "https://ddragon.leagueoflegends.com/cdn/8.17.1",
     "data": "/data/en_US",
     "images": "/img/champion"
   };
@@ -14,13 +14,12 @@ var API = {
     
     for (var i in champions) {
       var champion = champions[i];
-  
+      var champName = champion.name;
       var championDiv = document.createElement("div");
-      championDiv.className = "champDiv ";
-  
+      championDiv.className = "champDiv";
+  //https://api.champion.gg/v2/champions/${champion.key}?&limit=200&champData=groupedWins,trinkets,firstitems,summoners,finalitems,masteries,hashes,skillorderhash&api_key=${API.key}
       var championLink = document.createElement("a");
-      // championLink.setAttribute("href", `http://api.champion.gg/v2/champions/${champion.key}?&limit=200&champData=groupedWins,trinkets,firstitems,summoners,finalitems,masteries,hashes,skillorderhash&api_key=${API.key}`);
-
+      championLink.setAttribute("href", `https://u.gg/lol/champions/` + champName + `/build/`);
       championLink.setAttribute("target", "_blank");
       championDiv.appendChild(championLink);
       championLink.setAttribute("class", "card text-white  bg-dark");
@@ -55,21 +54,15 @@ var API = {
 
   $("body").on("click", ".card", function(event){
     event.preventDefault();
-    console.log($(this).attr("data-hero"));
+    console.log($(this)[0].attributes[0].nodeValue);
+    window.open($(this)[0].attributes[0].nodeValue,'_blank');
     var newChamp = {
       url: $(this).attr("data-hero")
     }
 
-  $.post("/api/newChamp", newChamp)
+    $.post("/api/newChamp", newChamp)
     .then(function(data) {
-      console.log(data);
-      window.location.href = "localhost://newChamp";
-
+      console.log($(this).attributes[0].nodeValue);
+      window.location.href = $(this).attributes[0].nodeValue;
     })
-
-
   })
-
-
-
-

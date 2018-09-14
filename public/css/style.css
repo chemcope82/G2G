@@ -353,6 +353,8 @@ padding:40px 0px !important;
   text-transform: uppercase;
   letter-spacing: 2px;
   font-size: 12px;
+  font-family: 'Anton', sans-serif;
+
 }
 
 /* champDiv .col-md-2 {
@@ -364,13 +366,18 @@ padding:40px 0px !important;
 .grid-container {
   display: grid;
   grid-template-columns: auto auto auto auto auto auto auto;
-  grid-gap: 5px;
-  margin: 20px 60px 20px 60px;
+  grid-gap: 20px;
+  margin: 30px 70px 30px 70px;
 }
 .grid-container > div {
   text-align: center;
-  padding:  20px;
+  padding:  10px;
   font-size: 30px;
   display: grid;
   justify-content: space-evenly;
+}
+
+#userInfo {
+  float: left;
+  background-color: lightgrey;
 }
