@@ -1,19 +1,4 @@
 //vars for API Calls
-// //Skill Level
-// var skillLevel = getSkill();
-//Hero Name
-var heroName = "";
-
-//Stats
-var primRole = "";
-var secRole = "";
-var tactRole = "";
-
-
-
-
-//functions to collect data
-// function getSkill(){
 // Slider JQuery Version
 var slider = $("#myRange");
 var rank = $("#rankIcon");
@@ -54,8 +39,30 @@ slider.on("input", function () {
     
   }
 });
-// }
 
+//Skill Level
+var skillLevel = "";
+//Hero Name
+var heroName = "";
+
+//Stats
+var primRole = "";
+var secRole = "";
+var tactRole = "";
+
+$("#submitUser").click(function() {
+  event.preventDefault();
+  $.get("/api/users", function(data) {
+    users = data;
+    if(!users || !users.length){
+      // displayEmpty();
+    }
+    else{
+      console.log("user found");
+      displayUser(users);
+    }
+  });
+});
 
 
 $(".prim-role").click(function () {
@@ -76,3 +83,57 @@ $(".tact-role").click(function () {
   tactRole = $(this).val();
   //call to DB for Tactical Role
 });
+
+// This function displays a message when there are no users
+function displayEmpty() {
+  $("#userData").empty();
+  var messageH2 = $("<h2>");
+  messageH2.css({ "text-align": "center", "margin-top": "50px" });
+  messageH2.html("No User Found. Please click the create button.");
+  $("#userData").append(messageH2);
+  $("#userData").append("<button id='createUser'>Create User</button>");
+}
+
+// This function displays a message when there are no users
+function displayUser(data) {
+  $("#userData").empty();
+  var displayUser = $("<div>");
+  console.log(data);
+  
+  // for loop to find the right user data
+  for(var i = 0; i < data.length; i++){
+    if(data[i].user_name === $("#userNameInput").val()){
+    displayUser.attr("id", "userInfo");
+    displayUser.html(`
+    <div class="col-4">
+        <p>User Name</p>
+        <h1><span id="displayUser">${data[i].user_name}</span></h1>
+    </div>
+    <div class="col-4">
+        <p>Primary Role:</p>
+        <span id="primRole">${data[i].primary_role}</span>
+    </div>
+    <div class="col-4">
+        <p>Secondary Role:</p>
+        <span id="secRole">${data[i].secondary_role}</span>
+    </div>
+    <div class="col-4">
+        <p>Heroes: </p>
+        <span id="hero1">${data[i].top_hero_name}</span>
+        <br><br>
+        <span id="hero2">${data[i].secondary_hero_name}</span>
+    </div>
+    <div class="col-4">
+        <p>Tactical Role:</p>
+        <span id="tactRole">${data[i].tactical_role}</span>
+    </div>
+    <div class="col-4">
+        <p>Team Name:</p>
+        <span id="teamName">${data[i].team_name}</span>
+    </div>
+    `);
+  }
+
+  }
+  $("#userData").append(displayUser);
+}

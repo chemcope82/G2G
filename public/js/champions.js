@@ -1,7 +1,7 @@
 console.log("connected champions.js")
 var API = {
     "key": "ede1611243a89b545af7e3cb141474ca",
-    "base": "http://ddragon.leagueoflegends.com/cdn/8.17.1",
+    "base": "https://ddragon.leagueoflegends.com/cdn/8.17.1",
     "data": "/data/en_US",
     "images": "/img/champion"
   };
@@ -14,12 +14,12 @@ var API = {
     
     for (var i in champions) {
       var champion = champions[i];
-  
+      var champName = champion.name;
       var championDiv = document.createElement("div");
       championDiv.className = "champDiv";
-  
+  //https://api.champion.gg/v2/champions/${champion.key}?&limit=200&champData=groupedWins,trinkets,firstitems,summoners,finalitems,masteries,hashes,skillorderhash&api_key=${API.key}
       var championLink = document.createElement("a");
-      // championLink.setAttribute("href", `http://api.champion.gg/v2/champions/${champion.key}?&limit=200&champData=groupedWins,trinkets,firstitems,summoners,finalitems,masteries,hashes,skillorderhash&api_key=${API.key}`);
+      championLink.setAttribute("href", `https://u.gg/lol/champions/` + champName + `/build/`);
       championLink.setAttribute("target", "_blank");
       championDiv.appendChild(championLink);
       
@@ -30,11 +30,11 @@ var API = {
       var name = document.createElement("p");
       name.textContent = champion.name;
       championLink.appendChild(name);
-      var newButton = document.createElement("BUTTON");
-      newButton.textContent = champion.name;
-      newButton.setAttribute("data-hero", `http://api.champion.gg/v2/champions/${champion.key}?&limit=200&champData=groupedWins,trinkets,firstitems,summoners,finalitems,masteries,hashes,skillorderhash&api_key=${API.key}`)
-      newButton.setAttribute("class", "championButton")
-      championLink.appendChild(newButton);
+      // var newButton = document.createElement("BUTTON");
+      // newButton.textContent = champion.name;
+      // newButton.setAttribute("data-hero", `http://api.champion.gg/v2/champions/${champion.key}?&limit=200&champData=groupedWins,trinkets,firstitems,summoners,finalitems,masteries,hashes,skillorderhash&api_key=${API.key}`)
+      // newButton.setAttribute("class", "championButton")
+      // championLink.appendChild(newButton);
       
       containerDiv.appendChild(championDiv);
     }
