@@ -11,6 +11,8 @@ module.exports = function(sequelize, DataTypes) {
         adc: DataTypes.STRING,
         role5: DataTypes.BOOLEAN,
         support: DataTypes.STRING,
+    },{
+        timestamps: false
     });
 return teams;
 };
