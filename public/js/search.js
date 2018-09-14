@@ -178,6 +178,7 @@ function displayUser(data) {
 
 
 $("#findTeam").click(function(){
+  
   event.preventDefault();
 
   $.get("/api/teams", function(data) {
@@ -190,8 +191,9 @@ $("#findTeam").click(function(){
       displayTeams(teams);
     }
   });
-
 });
+
+
 
 
 function callModal(){
@@ -251,7 +253,7 @@ function displayTeams(data){
         <p class="teamSpecs"><span id="support">${data[i].support}</span></p>
         </div>
         <div class="col-2">
-        <button class="joinTeamBtn" id='joinTeam${i}'>Join Team</button>
+        <button class="joinTeamBtn"  id='joinTeam${i}'>Join Team</button>
         <br><hr><br>
     </div>
     
@@ -261,29 +263,37 @@ function displayTeams(data){
 }
 
 
-$(".joinTeamBtn").click(function(){
+$(document).on("click", ".joinTeamBtn", function(){
   event.preventDefault();
-  console.log("joining team");
-  var teamID = $(this).attr("id").substring(8);
+  var teamID = ($(".joinTeamBtn").attr("id").substring(8));
   $.get("/api/teams", function(teamdata){
+    
     var teams = teamdata;
     $.get("/api/users", function(userdata){
       var user = userdata;
     
       //Check if open slot is userName primRole or secRole
-      if(teams[teamID].role1 === "" && (user.primary_role === "Top Lane" || user.secondary_role === "Top Lane")){
+      if(teams[teamID].role1 === false && (user[0].primary_role === "Top Lane" || user[0].secondary_role === "Top Lane")){
+        var newMember = {
+          top: user[0].user_name,
+          id: teams[teamID].id
+        }
+        console.log(newMember);
+        //Add to team
+        $.post("/api/updateTeam", newMember,function(addMember){
+          location.reload();
+        });
+        
+      }else if(teams[teamID].role2 === false && (user.primary_role === "Jungler" || user.secondary_role === "Jungler")){
         //Add to team
         teams[teamID].top = user.user_name;
-      }else if(teams[teamID].role2 === "" && (user.primary_role === "Jungler" || user.secondary_role === "Jungler")){
+      }else if(teams[teamID].role3 === false && (user.primary_role === "Mid Lane" || user.secondary_role === "Mid Lane")){
         //Add to team
         teams[teamID].top = user.user_name;
-      }else if(teams[teamID].role3 === "" && (user.primary_role === "Mid Lane" || user.secondary_role === "Mid Lane")){
+      }else if(teams[teamID].role4 === false && (user.primary_role === "ADC" || user.secondary_role === "ADC")){
         //Add to team
         teams[teamID].top = user.user_name;
-      }else if(teams[teamID].role4 === "" && (user.primary_role === "ADC" || user.secondary_role === "ADC")){
-        //Add to team
-        teams[teamID].top = user.user_name;
-      }else if(teams[teamID].role5 === "" && (user.primary_role === "Support" || user.secondary_role === "Support")){
+      }else if(teams[teamID].role5 === false && (user.primary_role === "Support" || user.secondary_role === "Support")){
         //Add to team
         teams[teamID].top = user.user_name;
       }else{

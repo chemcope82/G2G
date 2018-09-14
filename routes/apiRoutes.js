@@ -39,6 +39,18 @@ module.exports = function(app) {
     });
   });
 
+  app.post("/api/updateTeam", function(req, res){
+    db.teams.update({top: req.body.top}, {
+      where: {
+        id: req.body.id,
+
+      }
+    }).then(function(results){
+      res.json(results);
+      console.log("do i run?");
+    });
+  });
+
   // Delete an team by name
   app.delete("/api/teams/:id", function(req, res) {
     db.teams.destroy({ where: { id: req.params.id } }).then(function(results) {
