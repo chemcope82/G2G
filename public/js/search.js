@@ -54,6 +54,8 @@ var tactRole = "";
 
 $("#submitUser").click(function() {
   event.preventDefault();
+  // $("#criteria").empty();
+  
   $.get("/api/users", function(data) {
     users = data;
     if(!users || !users.length){
@@ -68,26 +70,39 @@ $("#submitUser").click(function() {
 
 $("#createUser").click(function(){
   event.preventDefault();
-  userName = $("#userNameInput").val();
-  displayCriteria();
+  $("#userData").empty();
+  // displayCriteria();
      
   });
 
 $("#updateUser").click(function(){
   event.preventDefault();
+  console.log(rankVal);
   userName = $("#userNameInput").val();
-  displayCriteria();
+  // displayCriteria();
   var newUser = {
     user_name: userName,
     team_name: "",
-    skill_level: skillLevel,
+    skill_level: rankVal,
     primary_role: primRole,
     secondary_role: secRole,
     tactical_role: tactRole,
     top_hero_name: "",
     secondary_hero_name: "",
   };
-})
+  console.log(newUser);
+
+    $.ajax("/api/users", {
+        type: "POST",
+        data: newUser
+    }).then(function() {
+        // location.reload();
+    });
+});
+  // $.post("/api/users/", user, function(){
+  // location.reload();
+  // };
+// });
 
 
 
@@ -115,7 +130,7 @@ function displayEmpty() {
   $("#userData").empty();
   var messageH2 = $("<h2>");
   messageH2.css({ "text-align": "center", "margin-top": "50px" });
-  messageH2.html("No User Found. Please click the create button.");
+  messageH2.html("No Information Available...");
   $("#userData").append(messageH2);
   $("#userData").append("<button id='createUser'>Create User</button>");
 }
@@ -124,38 +139,35 @@ function displayEmpty() {
 function displayUser(data) {
   $("#userData").empty();
   var displayUser = $("<div>");
-  console.log(data);
   
   // for loop to find the right user data
   for(var i = 0; i < data.length; i++){
     if(data[i].user_name === $("#userNameInput").val()){
     displayUser.attr("id", "userInfo");
     displayUser.html(`
-    <div class="col-4">
-        <p>User Name</p>
-        <h1><span id="displayUser">${data[i].user_name}</span></h1>
-    </div>
-    <div class="col-4">
-        <p>Primary Role:</p>
-        <span id="primRole">${data[i].primary_role}</span>
-    </div>
-    <div class="col-4">
-        <p>Secondary Role:</p>
-        <span id="secRole">${data[i].secondary_role}</span>
-    </div>
-    <div class="col-4">
-        <p>Heroes: </p>
-        <span id="hero1">${data[i].top_hero_name}</span>
-        <br><br>
-        <span id="hero2">${data[i].secondary_hero_name}</span>
-    </div>
-    <div class="col-4">
-        <p>Tactical Role:</p>
-        <span id="tactRole">${data[i].tactical_role}</span>
-    </div>
-    <div class="col-4">
-        <p>Team Name:</p>
-        <span id="teamName">${data[i].team_name}</span>
+    <div class="">
+        <p class="userSpecs"><b>User Name: </b></p>
+        <p class="userSpecs"><span id="displayUser">${data[i].user_name}</span></p>
+        <br>
+        <p class="userSpecs"><b>Skill Level: </b></p>
+        <p class="userSpecs"><span id="skillLevel">${data[i].skill_level}</span></p>
+        <br>
+        <p class="userSpecs"><b>Primary Role: </b></p>
+        <p class="userSpecs"><span id="primRole">${data[i].primary_role}</span></p>
+        <br>
+        <p class="userSpecs"><b>Secondary Role: </b></p>
+        <p class="userSpecs"><span id="secRole">${data[i].secondary_role}</span></p>
+        <br>
+        <p class="userSpecs"><b>Heroes: </b></p>
+        <p class="userSpecs"><span id="hero1">${data[i].top_hero_name}</span></p>
+        <p class="userSpecs"><span id="hero2">${data[i].secondary_hero_name}</span></p>
+        <br>
+        <p class="userSpecs"><b>Tactical Role: </b></p>
+        <p class="userSpecs"><span id="tactRole">${data[i].tactical_role}</span></p>
+        <br>
+        <p class="userSpecs"><b>Team Name: </b></p>
+        <p class="userSpecs"><span id="teamName">${data[i].team_name}</span></p>
+        <br>
     </div>
     `);
   }
@@ -164,135 +176,70 @@ function displayUser(data) {
   $("#userData").append(displayUser);
 }
 
-function displayCriteria(){
-  var modUser = $("<div>");
-  modUser.html(
-    `
-    <!-- Skill Level Selector -->
-        <div class="slidecontainer">
-            <input type="range" min="1" max="70" value="35" class="slider" id="myRange">
-            <div class="slidecontainer">
-                <div id="rank">
-                    <span id="rankIcon"><img src='../images/TierIcons/PlatinumTier.png' class='tier'></span>
-                </div>
-                
-            </div>
+
+$("#findTeam").click(function(){
+  event.preventDefault();
+
+  $.get("/api/teams", function(data) {
+    teams = data;
+    if(!teams || !teams.length){
+      displayEmpty();
+    }
+    else{
+      console.log("team found");
+      displayTeams(teams);
+    }
+  });
+
+});
+
+$("#joinTeam").click(function(){
+  //Check if open slot is userName primRole or secRole
+
+    //Add to team
+
+    //Say slot is not available
+    
+});
+
+
+function displayTeams(data){
+  var displayTeam = $("<div>");
+  displayTeam.attr("id", "teamInfo");
+  for(var i = 0; i < data.length; i++){
+    displayTeam.append(`
+    <div class="row" id="teamdisplay">
+      <div class="col-2">
+        <p class="teamSpecs"><b>Team Name: </b></p>
+        <p class="teamSpecs"><span id="displayTeam">${data[i].team_name}</span></p>
         </div>
-        <hr>
-        <div class="primaryRole">
-            <label>Primary Role</label>
-            <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                    <div class="input-group-text">
-                    <input type="checkbox" class="prim-role" aria-label="Primary Role" value="Top Lane">
-                    </div>
-                </div>
-                <label class="form-control" aria-label="Primary Role" id="TopLane">Top Lane</label>
-                </div>
-                <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                        <div class="input-group-text">
-                        <input type="checkbox" class="prim-role" aria-label="Primary Role" value="Jungler">
-                        </div>
-                    </div>
-                    <label class="form-control" aria-label="Primary Role" id="Jungler">Jungler</label>
-                </div>
-                <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                        <div class="input-group-text">
-                        <input type="checkbox" class="prim-role" aria-label="Primary Role" value="Mid Lane">
-                        </div>
-                    </div>
-                    <label class="form-control" aria-label="Primary Role" id="MidLane">Mid Lane</label>
-                </div>
-                <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                        <div class="input-group-text">
-                        <input type="checkbox" class="prim-role" aria-label="Primary Role" value="ADC">
-                        </div>
-                    </div>
-                    <label class="form-control" aria-label="Primary Role" id="ADC">ADC</label>
-                </div>
-                <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                        <div class="input-group-text">
-                        <input type="checkbox" class="prim-role" aria-label="Primary Role" value="Support">
-                        </div>
-                    </div>
-                    <label class="form-control" aria-label="Primary Role" id="Support">Support</label>
-                </div>
+        <div class="col-2">
+        <p class="teamSpecs"><b>Top Lane: </b></p>
+        <p class="teamSpecs"><span id="top">${data[i].top}</span></p>
         </div>
-        <hr>
-        <div class="secondaryRole">
-            <label>Secondary Role</label>
-            <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                    <div class="input-group-text">
-                    <input type="checkbox" class="sec-role" aria-label="Secondary Role" value="Top Lane">
-                    </div>
-                </div>
-                <label class="form-control" aria-label="Secondary Role" name="Top Lane">Top Lane</label>
-                </div>
-                <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                        <div class="input-group-text">
-                        <input type="checkbox" class="sec-role" aria-label="Secondary Role" value="Jungler">
-                        </div>
-                    </div>
-                    <label class="form-control" aria-label="Secondary Role" name="Jungler">Jungler</label>
-                </div>
-                <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                        <div class="input-group-text">
-                        <input type="checkbox" class="sec-role" aria-label="Secondary Role" value="Mid Lane">
-                        </div>
-                    </div>
-                    <label class="form-control" aria-label="Secondary Role" name="Mid Lane">Mid Lane</label>
-                </div>
-                <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                        <div class="input-group-text">
-                        <input type="checkbox" class="sec-role" aria-label="Secondary Role" value="ADC">
-                        </div>
-                    </div>
-                    <label class="form-control" aria-label="Secondary Role" name="ADC">ADC</label>
-                </div>
-                <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                        <div class="input-group-text">
-                        <input type="checkbox" class="sec-role" aria-label="Secondary Role" value="Support">
-                        </div>
-                    </div>
-                    <label class="form-control" aria-label="Secondary Role" name="Support">Support</label>
-                </div>
-        </div> 
-        <div class="Tactical Role">
-                <label>Tactical Role</label>
-                <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                        <div class="input-group-text">
-                        <input type="checkbox" class="tact-role" aria-label="Tactical Role" value="Drafter">
-                        </div>
-                    </div>
-                    <label class="form-control" aria-label="Tactical Role" name="Drafter">Drafter</label>
-                    </div>
-                    <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                            <div class="input-group-text">
-                            <input type="checkbox" class="tact-role" aria-label="Tactical Role" value="Shot Caller">
-                            </div>
-                        </div>
-                        <label class="form-control" aria-label="Tactical Role" name="Shot Caller">Shot Caller</label>
-                    </div>
-                    <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                            <div class="input-group-text">
-                            <input type="checkbox" class="tact-role" aria-label="Tactical Role" value="Captain">
-                            </div>
-                        </div>
-                        <label class="form-control" aria-label="Tactical Role" name="Captain">Captain/IGL</label>
-                    </div>
-            </div> <!-- End of Roles -->
+        <div class="col-2">
+        <p class="teamSpecs"><b>Jungler: </b></p>
+        <p class="teamSpecs"><span id="jungler">${data[i].jungler}</span></p>
+        </div>
+        <div class="col-2">
+        <p class="teamSpecs"><b>Mid Lane: </b></p>
+        <p class="teamSpecs"><span id="mid">${data[i].mid}</span></p>
+        </div>
+        <div class="col-2">
+        <p class="teamSpecs"><b>ADC: </b></p>
+        <p class="teamSpecs"><span id="adc">${data[i].adc}</span></p>
+        </div>
+        <div class="col-2">
+        <p class="teamSpecs"><b>Support: </b></p>
+        <p class="teamSpecs"><span id="support">${data[i].support}</span></p>
+        </div>
+        <div class="col-2">
+        <button id='joinTeam'>Join Team</button>
+        <br><hr><br>
+    </div>
+    
     `);
-    $("#criteria").append(modUser);
+  }
+  $("#teamData").append(displayTeam);
 }
+

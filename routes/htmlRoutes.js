@@ -34,6 +34,11 @@ module.exports = function(app) {
     res.sendFile(path.join(__dirname, "../public/pages/players.html"));
   });
 
+  // Route to the players page
+  app.get("/teams", function(req, res) {
+    res.sendFile(path.join(__dirname, "../public/pages/teams.html"));
+  });
+
   // blog route loads tier list
   app.get("/tierList", function(req, res) {
     res.sendFile(path.join(__dirname, "../public/pages/tierList.html"));

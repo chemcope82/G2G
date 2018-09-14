@@ -19,8 +19,8 @@ module.exports = function(app) {
   app.post("/api/users", function(req, res) {
     db.users.create({
       user_name: req.body.user_name,
-      team_name: req.body.body,
-      skill_level: req.body.category,
+      team_name: req.body.team_name,
+      skill_level: req.body.skill_level,
       primary_role: req.body.primary_role,
       secondary_role: req.body.secondary_role,
       tactical_role: req.body.tactical_role,
