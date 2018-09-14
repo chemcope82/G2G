@@ -16,3 +16,7 @@ PRIMARY KEY(id)
 );
 
 SELECT * FROM users;
+
+USE teamDB;
+
+CREATE TABLE 

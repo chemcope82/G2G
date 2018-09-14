@@ -10,31 +10,33 @@ var API = {
   
   function initUI() {
     var containerDiv = document.createElement("div");
-    containerDiv.className = "container";
+    containerDiv.className = "grid-container";
     
     for (var i in champions) {
       var champion = champions[i];
   
       var championDiv = document.createElement("div");
-      championDiv.className = "champDiv";
+      championDiv.className = "champDiv ";
   
       var championLink = document.createElement("a");
       // championLink.setAttribute("href", `http://api.champion.gg/v2/champions/${champion.key}?&limit=200&champData=groupedWins,trinkets,firstitems,summoners,finalitems,masteries,hashes,skillorderhash&api_key=${API.key}`);
+
       championLink.setAttribute("target", "_blank");
       championDiv.appendChild(championLink);
+      championLink.setAttribute("class", "card text-white  bg-dark");
+
       
       var image = document.createElement("img");
       image.setAttribute("src", `${API.base}${API.images}/${champion.image.full}`);
+      image.setAttribute("class", "card-img-top");
       championLink.appendChild(image);
 
+
+
       var name = document.createElement("p");
+      name.setAttribute("class", "champName");
       name.textContent = champion.name;
       championLink.appendChild(name);
-      var newButton = document.createElement("BUTTON");
-      newButton.textContent = champion.name;
-      newButton.setAttribute("data-hero", `http://api.champion.gg/v2/champions/${champion.key}?&limit=200&champData=groupedWins,trinkets,firstitems,summoners,finalitems,masteries,hashes,skillorderhash&api_key=${API.key}`)
-      newButton.setAttribute("class", "championButton")
-      championLink.appendChild(newButton);
       
       containerDiv.appendChild(championDiv);
     }
@@ -51,7 +53,7 @@ var API = {
     xhr.send();
   })();
 
-  $("body").on("click", ".championButton", function(event){
+  $("body").on("click", ".card", function(event){
     event.preventDefault();
     console.log($(this).attr("data-hero"));
     var newChamp = {
