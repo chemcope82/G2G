@@ -45,6 +45,8 @@ var skillLevel = "";
 //Hero Name
 var heroName = "";
 
+var userName = "";
+
 //Stats
 var primRole = "";
 var secRole = "";
@@ -52,6 +54,8 @@ var tactRole = "";
 
 $("#submitUser").click(function() {
   event.preventDefault();
+  // $("#criteria").empty();
+  
   $.get("/api/users", function(data) {
     users = data;
     if(!users || !users.length){
@@ -63,6 +67,43 @@ $("#submitUser").click(function() {
     }
   });
 });
+
+$("#createUser").click(function(){
+  event.preventDefault();
+  $("#userData").empty();
+  // displayCriteria();
+     
+  });
+
+$("#updateUser").click(function(){
+  event.preventDefault();
+  console.log(rankVal);
+  userName = $("#userNameInput").val();
+  // displayCriteria();
+  var newUser = {
+    user_name: userName,
+    team_name: "",
+    skill_level: rankVal,
+    primary_role: primRole,
+    secondary_role: secRole,
+    tactical_role: tactRole,
+    top_hero_name: "",
+    secondary_hero_name: "",
+  };
+  console.log(newUser);
+
+    $.ajax("/api/users", {
+        type: "POST",
+        data: newUser
+    }).then(function() {
+        // location.reload();
+    });
+});
+  // $.post("/api/users/", user, function(){
+  // location.reload();
+  // };
+// });
+
 
 
 $(".prim-role").click(function () {
@@ -89,7 +130,7 @@ function displayEmpty() {
   $("#userData").empty();
   var messageH2 = $("<h2>");
   messageH2.css({ "text-align": "center", "margin-top": "50px" });
-  messageH2.html("No User Found. Please click the create button.");
+  messageH2.html("No Information Available...");
   $("#userData").append(messageH2);
   $("#userData").append("<button id='createUser'>Create User</button>");
 }
@@ -98,38 +139,35 @@ function displayEmpty() {
 function displayUser(data) {
   $("#userData").empty();
   var displayUser = $("<div>");
-  console.log(data);
   
   // for loop to find the right user data
   for(var i = 0; i < data.length; i++){
     if(data[i].user_name === $("#userNameInput").val()){
     displayUser.attr("id", "userInfo");
     displayUser.html(`
-    <div class="col-4">
-        <p>User Name</p>
-        <h1><span id="displayUser">${data[i].user_name}</span></h1>
-    </div>
-    <div class="col-4">
-        <p>Primary Role:</p>
-        <span id="primRole">${data[i].primary_role}</span>
-    </div>
-    <div class="col-4">
-        <p>Secondary Role:</p>
-        <span id="secRole">${data[i].secondary_role}</span>
-    </div>
-    <div class="col-4">
-        <p>Heroes: </p>
-        <span id="hero1">${data[i].top_hero_name}</span>
-        <br><br>
-        <span id="hero2">${data[i].secondary_hero_name}</span>
-    </div>
-    <div class="col-4">
-        <p>Tactical Role:</p>
-        <span id="tactRole">${data[i].tactical_role}</span>
-    </div>
-    <div class="col-4">
-        <p>Team Name:</p>
-        <span id="teamName">${data[i].team_name}</span>
+    <div class="">
+        <p class="userSpecs"><b>User Name: </b></p>
+        <p class="userSpecs"><span id="displayUser">${data[i].user_name}</span></p>
+        <br>
+        <p class="userSpecs"><b>Skill Level: </b></p>
+        <p class="userSpecs"><span id="skillLevel">${data[i].skill_level}</span></p>
+        <br>
+        <p class="userSpecs"><b>Primary Role: </b></p>
+        <p class="userSpecs"><span id="primRole">${data[i].primary_role}</span></p>
+        <br>
+        <p class="userSpecs"><b>Secondary Role: </b></p>
+        <p class="userSpecs"><span id="secRole">${data[i].secondary_role}</span></p>
+        <br>
+        <p class="userSpecs"><b>Heroes: </b></p>
+        <p class="userSpecs"><span id="hero1">${data[i].top_hero_name}</span></p>
+        <p class="userSpecs"><span id="hero2">${data[i].secondary_hero_name}</span></p>
+        <br>
+        <p class="userSpecs"><b>Tactical Role: </b></p>
+        <p class="userSpecs"><span id="tactRole">${data[i].tactical_role}</span></p>
+        <br>
+        <p class="userSpecs"><b>Team Name: </b></p>
+        <p class="userSpecs"><span id="teamName">${data[i].team_name}</span></p>
+        <br>
     </div>
     `);
   }
@@ -137,3 +175,131 @@ function displayUser(data) {
   }
   $("#userData").append(displayUser);
 }
+
+
+$("#findTeam").click(function(){
+  
+  event.preventDefault();
+
+  $.get("/api/teams", function(data) {
+    var teams = data;
+    if(!teams || !teams.length){
+      displayEmpty();
+    }
+    else{
+      console.log("team found");
+      displayTeams(teams);
+    }
+  });
+});
+
+
+
+
+function callModal(){
+  var modals = $("<div>");
+  modals.html(`
+  <div class="modal" tabindex="-1" role="dialog">
+<div class="modal-dialog" role="document">
+<div class="modal-content">
+<div class="modal-header">
+  <h5 class="modal-title">No Room In This Team</h5>
+  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <p>Your Roles are not available for this team.</p>
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+</div>
+</div>
+</div>
+</div>
+  `);
+  $("#teamInfo").append(modals);
+}
+
+
+function displayTeams(data){
+  var displayTeam = $("<div>");
+  displayTeam.attr("id", "teamInfo");
+  for(var i = 0; i < data.length; i++){
+    displayTeam.append(`
+    <div class="row" id="teamdisplay">
+      <div class="col-2">
+        <p class="teamSpecs"><b>Team Name: </b></p>
+        <p class="teamSpecs"><span id="displayTeam">${data[i].team_name}</span></p>
+        </div>
+        <div class="col-2">
+        <p class="teamSpecs"><b>Top Lane: </b></p>
+        <p class="teamSpecs"><span id="top">${data[i].top}</span></p>
+        </div>
+        <div class="col-2">
+        <p class="teamSpecs"><b>Jungler: </b></p>
+        <p class="teamSpecs"><span id="jungler">${data[i].jungler}</span></p>
+        </div>
+        <div class="col-2">
+        <p class="teamSpecs"><b>Mid Lane: </b></p>
+        <p class="teamSpecs"><span id="mid">${data[i].mid}</span></p>
+        </div>
+        <div class="col-2">
+        <p class="teamSpecs"><b>ADC: </b></p>
+        <p class="teamSpecs"><span id="adc">${data[i].adc}</span></p>
+        </div>
+        <div class="col-2">
+        <p class="teamSpecs"><b>Support: </b></p>
+        <p class="teamSpecs"><span id="support">${data[i].support}</span></p>
+        </div>
+        <div class="col-2">
+        <button class="joinTeamBtn"  id='joinTeam${i}'>Join Team</button>
+        <br><hr><br>
+    </div>
+    
+    `);
+  };
+  $("#teamData").append(displayTeam);
+}
+
+
+$(document).on("click", ".joinTeamBtn", function(){
+  event.preventDefault();
+  var teamID = ($(".joinTeamBtn").attr("id").substring(8));
+  $.get("/api/teams", function(teamdata){
+    
+    var teams = teamdata;
+    $.get("/api/users", function(userdata){
+      var user = userdata;
+    
+      //Check if open slot is userName primRole or secRole
+      if(teams[teamID].role1 === false && (user[0].primary_role === "Top Lane" || user[0].secondary_role === "Top Lane")){
+        var newMember = {
+          top: user[0].user_name,
+          id: teams[teamID].id
+        }
+        console.log(newMember);
+        //Add to team
+        $.post("/api/updateTeam", newMember,function(addMember){
+          location.reload();
+        });
+        
+      }else if(teams[teamID].role2 === false && (user.primary_role === "Jungler" || user.secondary_role === "Jungler")){
+        //Add to team
+        teams[teamID].top = user.user_name;
+      }else if(teams[teamID].role3 === false && (user.primary_role === "Mid Lane" || user.secondary_role === "Mid Lane")){
+        //Add to team
+        teams[teamID].top = user.user_name;
+      }else if(teams[teamID].role4 === false && (user.primary_role === "ADC" || user.secondary_role === "ADC")){
+        //Add to team
+        teams[teamID].top = user.user_name;
+      }else if(teams[teamID].role5 === false && (user.primary_role === "Support" || user.secondary_role === "Support")){
+        //Add to team
+        teams[teamID].top = user.user_name;
+      }else{
+      //Say slot is not available
+      callModal();
+      }
+  });
+});
+});

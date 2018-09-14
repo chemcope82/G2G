@@ -1,38 +1,34 @@
-# Project Starter
+# LoL G2G(Group Together)
 
-In this activity we will add the provided boilerplate to group project repos.
+## Motivation
+Group together was created to be an all in one Team Builder for competitive gaming. We want to eliminate the problem that many users often run into when trying to take the next step in improving their gameplay, struggling to find like minded players or up to date information on builds or strategies. Players should be able to find a team, look for team members, get any news or updates the game has released or that are upcoming. Our goal is to allow players to get any information they need in one place, eliminating the need to use multiple sites to get all the information players need.
 
-## Instructions
+## Features
+ - Team Builder
+ - Dynamically updating list of all Champions
+ - Updates on the professional scene, tweets, and upcoming matches
+ - Links to most popular builds, and statistics for each Champion
+ 
+## Technologies
+ - Riot API
+ - Champion.gg API
+ - DDragon API
+ - Slick carousel
 
-* Only one member of each group should complete this activity while the others watch.
+## How to use Team Builder
+ - Navigate to the "Players" page via the nav bar
+ - Input your user name
+ - Use the slider to select your appropriate skill level
+ - Select your Primary and Secondary Role
+ - Select a Tactical Role
+ - Click Submit
 
-* Copy the entire [Unsolved](Unsolved) folder to another location on your computers &mdash; wherever you would like your local copy of the group project to be.
+## Contributors
+ - Trang Do
+ - Mike Soto
+ - Chase Rabon
+ - Miles Benovic
+ - Travis Copeland
 
-* Rename the copied "Unsolved" folder to the name of your project.
-
-* Open the copied project folder's `package.json` file and change its `name` property to the name of your project.
-
-* CD to the root of the copied project folder with your terminal and run the following commands:
-
-  ```
-  git init
-  git add .
-  git commit -m "Initial commit"
-  ```
-
-* Then copy the GitHub repo's remote SSH URL (the same URL you'd use to clone the repo).
-
-* Run the following commands in your terminal, replacing <remote-url> with your GitHub repo's remote SSH URL.
-
-  ```
-  git remote add origin <remote-url>
-  git push origin master
-  ```
-
-* If completed successfully you should see all of the files uploaded to GitHub.
-
-* All other group members should now clone the repo.
-
-* Discuss as a group:
-
-  * How would you now add changes to this project?
+## Link
+https://lolg2g.herokuapp.com/

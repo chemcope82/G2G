@@ -509,3 +509,38 @@ css */
   justify-content: space-evenly;
 }
 
+#userInfo {
+  width: 75%;
+  margin-top:10px;
+  text-align: left;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 12px;
+  font-family: 'Anton', sans-serif;
+  float: left;
+  background-color: lightgrey;
+}
+
+#userData {
+  margin-left: 10px;
+}
+#teamInfo{
+  width: 100%;
+  margin: 10px;
+  text-align: left;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 12px;
+  font-family: 'Anton', sans-serif;
+  float: left;
+  background-color: lightgrey;
+}
+
+#teamDisplay{
+  width: 100%;
+  margin: 10px;
+}
+
+.userSpecs {
+  
+}
