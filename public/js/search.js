@@ -64,6 +64,22 @@ $("#submitUser").click(function() {
   });
 });
 
+$("#createUser").click(function(){
+  event.preventDefault();
+    // POST route for saving a new user
+    var newUser = {
+      user_name: ,
+      team_name: ,
+      skill_level: ,
+      primary_role: ,
+      secondary_role: ,
+      tactical_role: ,
+      top_hero_name: ,
+      secondary_hero_name: 
+    };
+  })
+})
+
 
 $(".prim-role").click(function () {
   $(".prim-role").not(this).prop("checked", false);
@@ -136,4 +152,137 @@ function displayUser(data) {
 
   }
   $("#userData").append(displayUser);
+}
+
+function displayCriteria(){
+  var modUser = $("<div>");
+  modUser.html(
+    `
+    <!-- Skill Level Selector -->
+        <div class="slidecontainer">
+            <input type="range" min="1" max="70" value="35" class="slider" id="myRange">
+            <div class="slidecontainer">
+                <div id="rank">
+                    <span id="rankIcon"><img src='../images/TierIcons/PlatinumTier.png' class='tier'></span>
+                </div>
+                
+            </div>
+        </div>
+        <hr>
+        <div class="primaryRole">
+            <label>Primary Role</label>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <div class="input-group-text">
+                    <input type="checkbox" class="prim-role" aria-label="Primary Role" value="Top Lane">
+                    </div>
+                </div>
+                <label class="form-control" aria-label="Primary Role" id="TopLane">Top Lane</label>
+                </div>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">
+                        <input type="checkbox" class="prim-role" aria-label="Primary Role" value="Jungler">
+                        </div>
+                    </div>
+                    <label class="form-control" aria-label="Primary Role" id="Jungler">Jungler</label>
+                </div>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">
+                        <input type="checkbox" class="prim-role" aria-label="Primary Role" value="Mid Lane">
+                        </div>
+                    </div>
+                    <label class="form-control" aria-label="Primary Role" id="MidLane">Mid Lane</label>
+                </div>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">
+                        <input type="checkbox" class="prim-role" aria-label="Primary Role" value="ADC">
+                        </div>
+                    </div>
+                    <label class="form-control" aria-label="Primary Role" id="ADC">ADC</label>
+                </div>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">
+                        <input type="checkbox" class="prim-role" aria-label="Primary Role" value="Support">
+                        </div>
+                    </div>
+                    <label class="form-control" aria-label="Primary Role" id="Support">Support</label>
+                </div>
+        </div>
+        <hr>
+        <div class="secondaryRole">
+            <label>Secondary Role</label>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <div class="input-group-text">
+                    <input type="checkbox" class="sec-role" aria-label="Secondary Role" value="Top Lane">
+                    </div>
+                </div>
+                <label class="form-control" aria-label="Secondary Role" name="Top Lane">Top Lane</label>
+                </div>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">
+                        <input type="checkbox" class="sec-role" aria-label="Secondary Role" value="Jungler">
+                        </div>
+                    </div>
+                    <label class="form-control" aria-label="Secondary Role" name="Jungler">Jungler</label>
+                </div>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">
+                        <input type="checkbox" class="sec-role" aria-label="Secondary Role" value="Mid Lane">
+                        </div>
+                    </div>
+                    <label class="form-control" aria-label="Secondary Role" name="Mid Lane">Mid Lane</label>
+                </div>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">
+                        <input type="checkbox" class="sec-role" aria-label="Secondary Role" value="ADC">
+                        </div>
+                    </div>
+                    <label class="form-control" aria-label="Secondary Role" name="ADC">ADC</label>
+                </div>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">
+                        <input type="checkbox" class="sec-role" aria-label="Secondary Role" value="Support">
+                        </div>
+                    </div>
+                    <label class="form-control" aria-label="Secondary Role" name="Support">Support</label>
+                </div>
+        </div> 
+        <div class="Tactical Role">
+                <label>Tactical Role</label>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">
+                        <input type="checkbox" class="tact-role" aria-label="Tactical Role" value="Drafter">
+                        </div>
+                    </div>
+                    <label class="form-control" aria-label="Tactical Role" name="Drafter">Drafter</label>
+                    </div>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text">
+                            <input type="checkbox" class="tact-role" aria-label="Tactical Role" value="Shot Caller">
+                            </div>
+                        </div>
+                        <label class="form-control" aria-label="Tactical Role" name="Shot Caller">Shot Caller</label>
+                    </div>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text">
+                            <input type="checkbox" class="tact-role" aria-label="Tactical Role" value="Captain">
+                            </div>
+                        </div>
+                        <label class="form-control" aria-label="Tactical Role" name="Captain">Captain/IGL</label>
+                    </div>
+            </div> <!-- End of Roles -->
+    `);
+    $("#criteria").append(modUser);
 }

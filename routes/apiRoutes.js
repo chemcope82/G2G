@@ -17,9 +17,19 @@ module.exports = function(app) {
 
   // Create a new user
   app.post("/api/users", function(req, res) {
-    db.users.create(req.body).then(function(results) {
+    db.users.create({
+      user_name: req.body.user_name,
+      team_name: req.body.body,
+      skill_level: req.body.category,
+      primary_role: req.body.primary_role,
+      secondary_role: req.body.secondary_role,
+      tactical_role: req.body.tactical_role,
+      top_hero_name: req.body.top_hero_name,
+      secondary_hero_name: req.body.secondary_hero_name
+    }).then(function(results){
       res.json(results);
     });
+      
   });
 
   // Create a new team
