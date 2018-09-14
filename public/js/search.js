@@ -45,6 +45,8 @@ var skillLevel = "";
 //Hero Name
 var heroName = "";
 
+var userName = "";
+
 //Stats
 var primRole = "";
 var secRole = "";
@@ -66,19 +68,27 @@ $("#submitUser").click(function() {
 
 $("#createUser").click(function(){
   event.preventDefault();
-    // POST route for saving a new user
-    var newUser = {
-      user_name: ,
-      team_name: ,
-      skill_level: ,
-      primary_role: ,
-      secondary_role: ,
-      tactical_role: ,
-      top_hero_name: ,
-      secondary_hero_name: 
-    };
-  })
+  userName = $("#userNameInput").val();
+  displayCriteria();
+     
+  });
+
+$("#updateUser").click(function(){
+  event.preventDefault();
+  userName = $("#userNameInput").val();
+  displayCriteria();
+  var newUser = {
+    user_name: userName,
+    team_name: "",
+    skill_level: skillLevel,
+    primary_role: primRole,
+    secondary_role: secRole,
+    tactical_role: tactRole,
+    top_hero_name: "",
+    secondary_hero_name: "",
+  };
 })
+
 
 
 $(".prim-role").click(function () {
