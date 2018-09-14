@@ -10,6 +10,8 @@
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
         <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:700|Fjalla+One" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Bungee+Shade" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Quantico:700" rel="stylesheet">
+
         <title> LOLG2G </title>
 </head>
 
@@ -21,19 +23,22 @@
             <a class="navbar-brand" href="/">LOLG2G</a>
         </div>
         <ul>
-            <li><a href="/groupSearch">SEARCH</a></li>
             <li><a href="/updates">UPDATES</a></li>
             <li><a href="/players">PLAYERS</a></li>
             <li><a href="/teams">TEAMS</a></li>
-            <li><a href="/proBuilds">PRO BUILDS</a></li>
             <li><a href="/tierList">TIER LIST</a></li>
             <li><a href="/champions">CHAMPIONS</a></li>
         </ul>
     </nav>
     <!-- Table for Search Criteria -->
+
+<div  class="row">
+<div class="col-md-3">
     <div id="criteria">
         <!-- Skill Level Selector -->
+        
         <div class="slidecontainer">
+        <p id= "skillLevel">SKILL LEVEL:</p>
             <input type="range" min="1" max="70" value="35" class="slider" id="myRange">
             <div class="slidecontainer">
                 <div id="rank">
@@ -50,8 +55,11 @@
                     <div class="input-group-text">
                     <input type="checkbox" class="prim-role" aria-label="Primary Role" value="top">
                     </div>
+            
                 </div>
-                <label class="form-control" aria-label="Primary Role" id="TopLane">Top Lane</label>
+                <label class="form-control" aria-label="Primary Role" id="TopLane">TOP LANE</label>
+                <span id="rankIcon">
+                    <!-- <img id="laneIcon" src='./images/top.png' class='tier'></span> -->
                 </div>
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
@@ -59,7 +67,8 @@
                         <input type="checkbox" class="prim-role" aria-label="Primary Role" value="jungler">
                         </div>
                     </div>
-                    <label class="form-control" aria-label="Primary Role" id="Jungler">Jungler</label>
+                    <label class="form-control" aria-label="Primary Role" id="Jungler">JUNGLER</label>
+                    <!-- <img id="laneIcon" src='./images/jg.png' class='tier'></span> -->
                 </div>
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
@@ -67,7 +76,8 @@
                         <input type="checkbox" class="prim-role" aria-label="Primary Role" value="mid">
                         </div>
                     </div>
-                    <label class="form-control" aria-label="Primary Role" id="MidLane">Mid Lane</label>
+                    <label class="form-control" aria-label="Primary Role" id="MidLane">MID LANE </label>
+                    <!-- <img id="laneIcon" src='./images/mid.png' height= "50px" width= "10px" class='tier'></span> -->
                 </div>
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
@@ -76,6 +86,7 @@
                         </div>
                     </div>
                     <label class="form-control" aria-label="Primary Role" id="ADC">ADC</label>
+                    <!-- <img id="laneIcon" src='./images/bot.png' class='tier'></span> -->
                 </div>
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
@@ -83,19 +94,22 @@
                         <input type="checkbox" class="prim-role" aria-label="Primary Role" value="support">
                         </div>
                     </div>
-                    <label class="form-control" aria-label="Primary Role" id="Support">Support</label>
+                    <label class="form-control" aria-label="Primary Role" id="Support">SUPPORT</label>
+                    <!-- <img id="laneIcon" src='./images/support.png' class='tier'></span> -->
                 </div>
         </div>
-        <hr>
+    
+        <br>
+       
         <div class="secondaryRole">
-            <label>Secondary Role</label>
+            <label id= "role2">Secondary Role</label>
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
                     <div class="input-group-text">
                     <input type="checkbox" class="sec-role" aria-label="Secondary Role" value="top">
                     </div>
                 </div>
-                <label class="form-control" aria-label="Secondary Role" name="Top Lane">Top Lane</label>
+                <label class="form-control" aria-label="Secondary Role" name="Top Lane" id="TopLane">TOP LANE</label>
                 </div>
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
@@ -103,7 +117,7 @@
                         <input type="checkbox" class="sec-role" aria-label="Secondary Role" value="jungler">
                         </div>
                     </div>
-                    <label class="form-control" aria-label="Secondary Role" name="Jungler">Jungler</label>
+                    <label class="form-control" aria-label="Secondary Role" name="Jungler">JUNGLER</label>
                 </div>
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
@@ -111,7 +125,7 @@
                         <input type="checkbox" class="sec-role" aria-label="Secondary Role" value="mid">
                         </div>
                     </div>
-                    <label class="form-control" aria-label="Secondary Role" name="Mid Lane">Mid Lane</label>
+                    <label class="form-control" aria-label="Secondary Role" name="Mid Lane">MID LANE</label>
                 </div>
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
@@ -119,7 +133,7 @@
                         <input type="checkbox" class="sec-role" aria-label="Secondary Role" value="adc">
                         </div>
                     </div>
-                    <label class="form-control" aria-label="Secondary Role" name="ADC">ADC</label>
+                    <label class="form-control" aria-label="Secondary Role" name="ADC" id="ADC">ADC</label>
                 </div>
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
@@ -127,10 +141,11 @@
                         <input type="checkbox" class="sec-role" aria-label="Secondary Role" value="support">
                         </div>
                     </div>
-                    <label class="form-control" aria-label="Secondary Role" name="Support">Support</label>
+                    <label class="form-control" aria-label="Secondary Role" name="Support">SUPPORT</label>
                 </div>
         </div>
-        <div class="Tactical Role">
+        <br>
+        <div class="tacticalRole">
                 <label>Tactical Role</label>
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
@@ -138,7 +153,7 @@
                         <input type="checkbox" class="tact-role" aria-label="Tactical Role" value="drafter">
                         </div>
                     </div>
-                    <label class="form-control" aria-label="Tactical Role" name="Drafter">Drafter</label>
+                    <label class="form-control" aria-label="Tactical Role" name="Drafter">DRAFTER</label>
                     </div>
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
@@ -146,7 +161,7 @@
                             <input type="checkbox" class="tact-role" aria-label="Tactical Role" value="shot">
                             </div>
                         </div>
-                        <label class="form-control" aria-label="Tactical Role" name="Shot Caller">Shot Caller</label>
+                        <label class="form-control" aria-label="Tactical Role" name="Shot Caller">SHOT CALLER</label>
                     </div>
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
@@ -154,30 +169,35 @@
                             <input type="checkbox" class="tact-role" aria-label="Tactical Role" value="captain">
                             </div>
                         </div>
-                        <label class="form-control" aria-label="Tactical Role" name="Captain">Captain/IGL</label>
+                        <label class="form-control" aria-label="Tactical Role" name="Captain">CAPTAIN/IGL</label>
                     </div>
             </div> <!-- End of Roles -->
 
     </div> <!-- End of Criteria -->
+</div> <!--row-->
 
+
+<div class="col-md-9"> <!--row-->
     <!-- Table for Group Matches -->
     <div id="userInfo">
-        <div class="row">
-            <div class="col-12">
+        <!-- <div class="row"> -->
+            
                 <form>
                     <div class="form-group">
-                        <label for="userNameInput">Username:</label>
-                        <input type="username" class="form-control" id="userNameInput" aria-describedby="userName" placeholder="Enter a Username.">
-                        <small id="userName" class="form-text text-muted">Find a User.</small>
-                    </div>
-                    <button type="submit" class="btn btn-primary" id="submitUser">Submit</button>
-                    <button type='submit' class='btn btn-primary' id='updateUser'>Update User</button>
-                    <button type='submit' class='btn btn-primary' id='createUser'>Create User</button>
+                        <label for="userNameInput" id="username"></label>
+                        <p id=userTitle> USERNAME </p>
+                        <input type="username" class="form-control" id="userNameInput" aria-describedby="userName" placeholder="enter a username.">
+                        <small id="userName" class="form-text text-muted">FIND A USER.</small>
+                    </div> 
+                    <div class= buttonGroup>
+                    <button type="submit" class="userBtn" id="submitUser">Submit</button> <br>
+                    <button type='submit' class='userBtn' id='updateUser'>Update User</button> <br>
+                    <button type='submit' class='userBtn' id='createUser'>Create User</button>
+                </div>
                 </form>
             </div>
-        </div>
         <div class="row" id="userData">
-            
+</div>          
          
         </div> <!-- End of userData -->
         
