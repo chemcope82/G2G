@@ -329,3 +329,8 @@ padding:40px 0px !important;
 .tier{
   width: 100px;
 }
+
+#userInfo {
+  float: left;
+  background-color: lightgrey;
+}

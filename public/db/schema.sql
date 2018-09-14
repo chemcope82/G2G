@@ -16,3 +16,21 @@ PRIMARY KEY(id)
 );
 
 SELECT * FROM users;
+
+CREATE TABLE teams(
+id INTEGER(10) AUTO_INCREMENT NOT NULL,
+team_name VARCHAR(25),
+role1 BOOLEAN,
+top VARCHAR(25),
+role2 BOOLEAN,
+jungler VARCHAR(25),
+role3 BOOLEAN,
+mid VARCHAR(25),
+role4 BOOLEAN,
+adc VARCHAR(25),
+role5 BOOLEAN,
+support VARCHAR(25),
+PRIMARY KEY(id)
+);
+
+SELECT * FROM teams;
