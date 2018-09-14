@@ -1,4 +1,5 @@
 INSERT INTO users (user_name, team_name, skill_level, primary_role, secondary_role, tactical_role, top_hero_name, secondary_hero_name)
+
 VALUES  ("KirdMNKY", " ", "20", "Top", "Mid", "Drafter", "Darius", "Lee Sin"),
         ("LlamaLord", " ", "30", "Jungler", "Support", "Captain", "Vi", "Leona"),
         ("2trangzz", " ", "80", "ADC", "Support", "Shot Caller", "Miss Fortune", "Jinx");
