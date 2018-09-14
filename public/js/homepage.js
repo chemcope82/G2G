@@ -16,6 +16,8 @@ for (i = 0; i < maxItems; i++) {
 $slider.addClass("slideshow-left");
 $(".slideshow-left").slick({
   vertical: true,
+  autoplay: true,
+  autoplaySpeed: 2500,
   verticalSwiping: true,
   arrows: false,
   infinite: true,
@@ -76,4 +78,10 @@ $(".slideshow-text").slick({
   cssEase: "cubic-bezier(0.7, 0, 0.3, 1)"
 });
 
+// $(".autoplay").slick({
+//   slidesToShow: 5,
+//   slidesToScroll: 1,
+//   autoplay: true,
+//   autoPlaySpeed: 3000,
+// });
 
