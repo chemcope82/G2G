@@ -178,10 +178,11 @@ function displayUser(data) {
 
 
 $("#findTeam").click(function(){
+  
   event.preventDefault();
 
   $.get("/api/teams", function(data) {
-    teams = data;
+    var teams = data;
     if(!teams || !teams.length){
       displayEmpty();
     }
@@ -190,17 +191,35 @@ $("#findTeam").click(function(){
       displayTeams(teams);
     }
   });
-
 });
 
-$("#joinTeam").click(function(){
-  //Check if open slot is userName primRole or secRole
 
-    //Add to team
 
-    //Say slot is not available
-    
-});
+
+function callModal(){
+  var modals = $("<div>");
+  modals.html(`
+  <div class="modal" tabindex="-1" role="dialog">
+<div class="modal-dialog" role="document">
+<div class="modal-content">
+<div class="modal-header">
+  <h5 class="modal-title">No Room In This Team</h5>
+  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <p>Your Roles are not available for this team.</p>
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+</div>
+</div>
+</div>
+</div>
+  `);
+  $("#teamInfo").append(modals);
+}
 
 
 function displayTeams(data){
@@ -234,12 +253,53 @@ function displayTeams(data){
         <p class="teamSpecs"><span id="support">${data[i].support}</span></p>
         </div>
         <div class="col-2">
-        <button id='joinTeam'>Join Team</button>
+        <button class="joinTeamBtn"  id='joinTeam${i}'>Join Team</button>
         <br><hr><br>
     </div>
     
     `);
-  }
+  };
   $("#teamData").append(displayTeam);
 }
 
+
+$(document).on("click", ".joinTeamBtn", function(){
+  event.preventDefault();
+  var teamID = ($(".joinTeamBtn").attr("id").substring(8));
+  $.get("/api/teams", function(teamdata){
+    
+    var teams = teamdata;
+    $.get("/api/users", function(userdata){
+      var user = userdata;
+    
+      //Check if open slot is userName primRole or secRole
+      if(teams[teamID].role1 === false && (user[0].primary_role === "Top Lane" || user[0].secondary_role === "Top Lane")){
+        var newMember = {
+          top: user[0].user_name,
+          id: teams[teamID].id
+        }
+        console.log(newMember);
+        //Add to team
+        $.post("/api/updateTeam", newMember,function(addMember){
+          location.reload();
+        });
+        
+      }else if(teams[teamID].role2 === false && (user.primary_role === "Jungler" || user.secondary_role === "Jungler")){
+        //Add to team
+        teams[teamID].top = user.user_name;
+      }else if(teams[teamID].role3 === false && (user.primary_role === "Mid Lane" || user.secondary_role === "Mid Lane")){
+        //Add to team
+        teams[teamID].top = user.user_name;
+      }else if(teams[teamID].role4 === false && (user.primary_role === "ADC" || user.secondary_role === "ADC")){
+        //Add to team
+        teams[teamID].top = user.user_name;
+      }else if(teams[teamID].role5 === false && (user.primary_role === "Support" || user.secondary_role === "Support")){
+        //Add to team
+        teams[teamID].top = user.user_name;
+      }else{
+      //Say slot is not available
+      callModal();
+      }
+  });
+});
+});
